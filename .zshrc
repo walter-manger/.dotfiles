@@ -70,6 +70,7 @@ plugins=(
 alias x="exit"
 alias sz="source ~/.zshrc"
 alias hc="history -c"
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source $ZSH/oh-my-zsh.sh
 
