@@ -1,5 +1,24 @@
 # Dotfiles
 
+## Install Brew
+
+[brew.sh](https://brew.sh/)
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### Get Tools
+
+```
+brew bundle install
+```
+
+### Make it pretty
+
+```
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
 ## Setup Git
 

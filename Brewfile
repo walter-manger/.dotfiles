@@ -7,6 +7,9 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "weaveworks/tap"
 
+# ZSH Theme
+brew "pure"
+
 # System
 cask "macpass"
 cask "spectacle"
@@ -70,7 +73,6 @@ brew "p11-kit"
 brew "unbound"
 brew "harfbuzz"
 brew "ghostscript"
-
 brew "jq"
 brew "marked"
 brew "meson"
@@ -80,7 +82,6 @@ cask "xquartz"
 
 # Searching
 brew "ripgrep"
-brew "the_silver_searcher"
 
 # Emacs
 brew "daviderestivo/emacs-head/emacs-head@27", args: ["with-cocoa", "with-imagemagick"]
