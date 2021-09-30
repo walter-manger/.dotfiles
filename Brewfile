@@ -1,0 +1,93 @@
+tap "daviderestivo/emacs-head"
+tap "derailed/k9s"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "weaveworks/tap"
+
+# System
+cask "macpass"
+cask "spectacle"
+cask 'dropbox'
+
+# Development Tools
+brew "git"
+brew "go"
+cask "dash"
+cask "emacs"
+brew "minikube"
+brew "neovim"
+brew "nvm"
+brew "openjdk"
+brew "tree"
+brew "zsh-syntax-highlighting"
+brew "derailed/k9s/k9s"
+brew "node"
+brew "krb5"
+brew "kustomize"
+brew "languagetool"
+cask "visual-studio-code"
+cask "iterm2"
+cask "font-fira-code"
+cask "postman"
+brew "tmux"
+brew "yarn"
+brew "editorconfig"
+brew "jupyterlab"
+brew "ipython"
+brew "helm"
+
+
+# Compiling / Building
+brew "automake"
+brew "glib"
+brew "pkg-config"
+brew "tcl-tk"
+brew "coreutils"
+brew "nghttp2"
+brew "libtool"
+brew "gnutls"
+brew "gdk-pixbuf"
+brew "librsvg"
+brew "libcaca"
+brew "libksba"
+brew "libxml2"
+brew "libyaml"
+brew "zlib"
+brew "libheif"
+brew "imlib2"
+
+# Utils
+brew "curl"
+brew "telnet"
+brew "dive"
+
+# Uncategorized
+brew "fd"
+brew "p11-kit"
+brew "unbound"
+brew "harfbuzz"
+brew "ghostscript"
+
+brew "jq"
+brew "marked"
+brew "meson"
+brew "poppler"
+cask "skim"
+cask "xquartz"
+
+# Searching
+brew "ripgrep"
+brew "the_silver_searcher"
+
+# Emacs
+brew "daviderestivo/emacs-head/emacs-head@27", args: ["with-cocoa", "with-imagemagick"]
+brew "wordnet"
+brew "graphviz"
+cask "basictex"
+brew "hugo"
+brew "aspell"
+brew "shellcheck"
+brew "imagemagick"
