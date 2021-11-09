@@ -41,7 +41,7 @@ Host work
 
 ```
 
-TODO: Add some information about conditional gitconfig
+TODO: Add some information about conditional gitconfig UPDATE
 
 Call this way:
 
