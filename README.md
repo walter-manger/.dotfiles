@@ -41,6 +41,8 @@ Host work
 
 ```
 
+TODO: Add some information about conditional gitconfig
+
 Call this way:
 
 - `git clone git@personal:{org}/{repo}.git`
