@@ -41,7 +41,24 @@ Host work
 
 ```
 
-TODO: Add some information about conditional gitconfig
+
+Create some conditionals in `.gitconfig`
+
+```
+[includeIf "gitdir:~/repos/{some organization}/"]
+  path = .gitconfig-work
+[includeIf "gitdir:~/repos/walter-manger/"]
+  path = .gitconfig-personal
+```
+
+Then, for each gitconfig needed:
+
+```
+[user]
+   name = Walter Manger
+   email = {some-email}@{some-domain}.com
+
+```
 
 Call this way:
 
