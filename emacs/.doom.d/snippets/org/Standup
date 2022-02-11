@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Standup
+# uuid:
+# key: stand
+# condition: t
+# --
+** testing

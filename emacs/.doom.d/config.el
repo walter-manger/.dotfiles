@@ -100,5 +100,27 @@
 (load! "+evil")
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
-(setq org-roam-directory "~/roam")
+(setq org-roam-directory "~/Dropbox/Org/organizer/roam")
+
+;; (use-package prettier
+;;   :hook ((typescript-mode . prettier-mode)
+;;          (js-mode . prettier-mode)
+;;          (json-mode . prettier-mode)
+;;          (yaml-mode . prettier-mode)
+;;          (ruby-mode . prettier-mode)))
+
+(setq deft-directory "~/Dropbox/Org"
+      deft-extensions '("txt" "org" "md")
+      deft-recursive t)
+
+(use-package! jsonnet-mode
+  :defer t
+  :config
+  (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?}))
+  (setq jsonnet-use-smie t))
+
+
+(setq +format-with-lsp nil)
+;;(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
