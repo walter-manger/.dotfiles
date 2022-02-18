@@ -94,7 +94,7 @@
        (lookup
         +dictionary
         +docsets)       ; navigate your code and its documentation
-       lsp
+       (lsp)
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs

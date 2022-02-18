@@ -9,8 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 if [ -d "/opt/homebrew/share/zsh/site-functions" ]
 then
-    echo "Directory /opt/homebrew/share/zsh/site-functions exists, add it to fpath"
-    fpath+=/opt/homebrew/share/zsh/site-functions
+  fpath+=/opt/homebrew/share/zsh/site-functions
 fi
 
 # Set name of the theme to load --- if set to "random", it will
@@ -90,14 +89,8 @@ plugins=(
 	zsh-autosuggestions
 )
 
-alias x="exit"
-alias sz="source ~/.zshrc"
-alias hc="history -c"
-alias emacs="emacsclient"
-alias k="kubectl"
-
-alias hub="cd ~/repos/Agrium/digital-hub"
-alias wm="cd ~/repos/walter-manger"
+[[ -f "$HOME/.aliases" ]] && source ~/.aliases
+[[ -f "$HOME/.aliases.local" ]] && source ~/.aliases.local
 
 source $ZSH/oh-my-zsh.sh
 
@@ -128,13 +121,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+    [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
-export NODE_PATH=$NODE_PATH:`npm root -g`
-eval "$(pyenv init -)"
+if which npm > /dev/null; then export NODE_PATH=$NODE_PATH:`npm root -g`; fi
 
-export GOPATH="$(go env GOPATH)"
-export PATH="${PATH}:${GOPATH}/bin"
+if which go > /dev/null
+then
+  export GOPATH="$(go env GOPATH)"
+  export PATH="${PATH}:${GOPATH}/bin"
+fi
 
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+alias x="exit"
+alias sz="source ~/.zshrc"
+alias hc="history -c"
+alias emacs="emacsclient"
+alias k="kubectl"
+alias zshconfig="emacs ~/.zshrc"
+alias work="cd ~/repos/work"
+alias wm="cd ~/repos/walter-manger"
+alias dl="cd ~/Downloads"
+alias db="cd ~/Dropbox"
+alias docs="cd ~/Documents"

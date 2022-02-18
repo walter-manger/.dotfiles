@@ -124,3 +124,19 @@
 
 (setq +format-with-lsp nil)
 ;;(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
+
+;; After reviewing a lot of documentation about experimental flags
+;; https://github.com/creack/dotfiles/blob/master/.emacs#L465
+;; https://github.com/golang/tools/blob/master/gopls/doc/settings.md#experimentalworkspacemodule-bool
+;; https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/settings.md#experimentalworkspacemodule-bool
+;; https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/workspace.md
+;; https://varunksaini.com/vscode-multimodule-repo/
+;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-lsp-mode
+
+(after! lsp-mode
+(lsp-register-custom-settings
+ '(("gopls.completeUnimported" t t)
+   ("gopls.staticcheck" t t)
+   ("gopls.experimentalWorkspaceModule" t t)
+   ))
+  )

@@ -59,3 +59,4 @@
 (package! python-black)
 ;;(package! prettier)
 (package! jsonnet-mode)
+(package! protobuf-mode)
