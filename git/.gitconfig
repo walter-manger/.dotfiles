@@ -1,6 +1,7 @@
 [core]
   editor = emacs
   paging = delta
+  excludesfile = ~/.global-gitignore
 
 [include]
   path = .gitconfig-local
