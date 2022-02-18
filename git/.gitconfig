@@ -4,4 +4,4 @@
   excludesfile = ~/.global-gitignore
 
 [include]
-  path = .gitconfig-local
+  path = .gitconfig-user
