@@ -9,33 +9,6 @@
 (setq user-full-name "Walter Manger"
       user-mail-address "walter.manger@gmail.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code iScript" :size 19 :weight 'normal)
-      doom-big-font (font-spec :family "Fira Code iScript" :size 20 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "Fira Code iScript" :size 19))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-spacegrey)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/Org/organizer/.agenda-files")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
-
 (setq js-indent-level 2
       js2-basic-offset 2)
 
@@ -47,24 +20,6 @@
 
 (advice-remove 'org-tree-slide--display-tree-with-narrow
                #'+org-present--narrow-to-subtree-a)
-
-(add-to-list 'auto-mode-alist '("\\Earthfile\\'" . yaml-mode))
-
-(map! :leader
-      (:prefix-map ("a" . "applications")
-       (:prefix ("w" . "journal")
-        :desc "Open Work" "j" #'org-journal-new-entry)))
-
-;; config.el
-;; (use-package! python-black
-;;   :demand t
-;;   :after python)
-;; (add-hook! 'python-mode-hook #'python-black-on-save-mode)
-
-;; ;; Feel free to throw your own personal keybindings here
-;; (map! :leader :desc "Blacken Buffer" "m b b" #'python-black-buffer)
-;; (map! :leader :desc "Blacken Region" "m b r" #'python-black-region)
-;; (map! :leader :desc "Blacken Statement" "m b s" #'python-black-statement)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -84,25 +39,17 @@
 ;; they are implemented.
 
 
-(defun wm/add-file-keybinding (key file &optional desc)
-  (let ((key key)
-        (file file)
-        (desc desc))
-    (map! :desc (or desc file)
-          key
-          (lambda () (interactive) (find-file file)))))
-
-(wm/add-file-keybinding "C-c z w" "~/Dropbox/Org/organizer/.agenda-files/work.org" "work.org")
-(wm/add-file-keybinding "C-c z h" "~/Dropbox/Org/organizer/.agenda-files/home.org" "home.org")
-
 ;; Modules
+(load! "+ui")
+(load! "+functions")
+(load! "+bindings")
+(load! "+gtd")
 (load! "+dired")
 (load! "+evil")
+(load! "+python")
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-
-(setq org-roam-directory "~/Dropbox/Org/organizer/roam")
 
 ;; (use-package prettier
 ;;   :hook ((typescript-mode . prettier-mode)
@@ -134,9 +81,56 @@
 ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-lsp-mode
 
 (after! lsp-mode
-(lsp-register-custom-settings
- '(("gopls.completeUnimported" t t)
-   ("gopls.staticcheck" t t)
-   ("gopls.experimentalWorkspaceModule" t t)
-   ))
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+     ("gopls.staticcheck" t t)
+     ("gopls.experimentalWorkspaceModule" t t)
+     ))
   )
+
+(add-hook! 'elfeed-search-mode-hook 'elfeed-update)
+
+;; Since gopls keeps changing, it is better to tell format-all-the-code
+;; to specifically NOT use gopls as the formatter.
+;; https://github.com/hlissner/doom-emacs/issues/1652
+(setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode
+            go-mode
+            tex-mode
+            latex-mode))
+
+(add-hook! 'go-mode-hook
+  (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
+  (add-hook 'before-save-hook #'lsp-organize-imports nil 'local)
+  )
+
+
+;; brew install vale
+;; git clone git@github.com:errata-ai/vale-boilerplate.git
+;; .vale.ini needs to be in the directory of the file you want to lint
+;; Stolen from: https://emacstil.com/til/2022/03/05/setting-up-vale-prose-linter-on-emacs/
+(flycheck-define-checker vale
+  "A checker for prose"
+  :command ("vale" "--output" "line"
+            source)
+  :standard-input nil
+  :error-patterns
+  ((error line-start (file-name) ":" line ":" column ":" (id (one-or-more (not (any ":")))) ":" (message) line-end))
+  :modes (markdown-mode org-mode text-mode gfm-mode)
+  )
+(add-to-list 'flycheck-checkers 'vale 'append)
+
+;;; server list
+(setq sql-connection-alist
+      '((local.user.dev (sql-product 'postgres)
+                        (sql-port 5432)
+                        (sql-server "localhost")
+                        (sql-user "root")
+                        (sql-database "user"))
+        ))
+
+
+(setq inferior-lisp-program "clisp")
+
+(setq ob-mermaid-cli-path "~/node_modules/.bin/mmdc")
+

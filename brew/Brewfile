@@ -87,7 +87,7 @@ brew "ripgrep"
 brew "daviderestivo/emacs-head/emacs-head@27", args: ["with-cocoa", "with-imagemagick"]
 brew "wordnet"
 brew "graphviz"
-cask "basictex"
+brew "mactex"
 brew "hugo"
 brew "aspell"
 brew "shellcheck"

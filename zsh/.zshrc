@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
+export EDITOR='emacsclient'
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -134,3 +134,15 @@ fi
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export PATH=$HOME/.gloo/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GOPACKAGESDRIVER='/Users/wmanger-videoamp/repos/work/VideoAmp/central/tools/bazel/go/gopackagesdriver.sh'
+#export GOPACKAGESDRIVER='off'
+export PATH="/opt/homebrew/opt/gnuplot@4/bin:$PATH"

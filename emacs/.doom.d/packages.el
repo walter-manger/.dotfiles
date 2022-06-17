@@ -56,7 +56,12 @@
 ;(unpin! t)
 
 
-(package! python-black)
+;;(package! python-black)
 ;;(package! prettier)
 (package! jsonnet-mode)
 (package! protobuf-mode)
+(package! bazel)
+;;(package! elfeed-goodies)
+(package! ob-mermaid)
+(package! org-super-agenda)
+
