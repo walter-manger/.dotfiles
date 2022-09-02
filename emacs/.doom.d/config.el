@@ -21,6 +21,12 @@
 (advice-remove 'org-tree-slide--display-tree-with-narrow
                #'+org-present--narrow-to-subtree-a)
 
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -84,7 +90,7 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
-     ("gopls.experimentalWorkspaceModule" t t)
+     ;;("gopls.experimentalWorkspaceModule" t t)
      ))
   )
 
@@ -134,3 +140,20 @@
 
 (setq ob-mermaid-cli-path "~/node_modules/.bin/mmdc")
 
+(when (eq system-type 'darwin)
+  (setq insert-directory-program "/opt/homebrew/bin/gls"))
+
+;; https://org-roam.discourse.group/t/org-ref-code-in-doom-emacs-init-file/1483
+(use-package! org-ref
+  :after org
+  :commands
+  (org-ref-cite-hydra/body
+   org-ref-bibtex-hydra/body)
+  :init
+  (let ((cache-dir (concat doom-cache-dir "org-ref")))
+    (unless (file-exists-p cache-dir)
+      (make-directory cache-dir t))
+    (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
+
+(after! org
+ (require 'org-ref))

@@ -64,4 +64,4 @@
 ;;(package! elfeed-goodies)
 (package! ob-mermaid)
 (package! org-super-agenda)
-
+(package! org-ref)

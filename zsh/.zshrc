@@ -143,6 +143,6 @@ if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/path.zsh.inc' ]; the
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-export GOPACKAGESDRIVER='/Users/wmanger-videoamp/repos/work/VideoAmp/central/tools/bazel/go/gopackagesdriver.sh'
+#export GOPACKAGESDRIVER='/Users/wmanger-videoamp/repos/work/VideoAmp/central/tools/bazel/go/gopackagesdriver.sh'
 #export GOPACKAGESDRIVER='off'
 export PATH="/opt/homebrew/opt/gnuplot@4/bin:$PATH"
