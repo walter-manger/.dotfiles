@@ -22,10 +22,12 @@
 
   ;; Borrowing from -> https://github.com/nmartin84/.doom.d#capture-templates
   (setq org-capture-templates
-        '(("i" " Inbox" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
+        '(("i" "📥 Inbox" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
            "* REFILE %^{task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?")
-          ("s" " Source" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
+          ("s" "ℹ️ Source" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
            "* REFILE %^{description} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n:METADATA:\n- SOURCE: %(org-cliplink-capture)\n- AUTHOR:\n:END:\n%?")
+          ("r" "📚 Read" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
+           "* TO-READ %^{task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?")
           ;;("j" " journal")
           ;;("gp" " projects")
           ;;("b" " bullet journal")
@@ -70,15 +72,12 @@
             ( agenda ""
                      ((org-agenda-overriding-header "TODAY")))
 
-
                 ;; (agenda "" ((org-agenda-overriding-header "")
                 ;;         (org-super-agenda-groups
                 ;;          '((:name "Today"
                 ;;             :time-grid t
                 ;;             :date today
                 ;;             :order 1)))))
-
-
 
             ( todo "REFILE"
                    ((org-agenda-overriding-header "🗄️ To Refile")))

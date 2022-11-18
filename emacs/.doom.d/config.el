@@ -53,6 +53,7 @@
 (load! "+dired")
 (load! "+evil")
 (load! "+python")
+(load! "+music")
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
