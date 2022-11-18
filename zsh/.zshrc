@@ -21,6 +21,10 @@ ZSH_THEME=""
 autoload -U promptinit; promptinit
 prompt pure
 
+# use vi-mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -82,11 +86,12 @@ prompt pure
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	npm
-	yarn
-	macos
-	zsh-autosuggestions
+  git
+  npm
+  yarn
+  macos
+  zsh-autosuggestions
+  vi-mode
 )
 
 [[ -f "$HOME/.aliases" ]] && source ~/.aliases
