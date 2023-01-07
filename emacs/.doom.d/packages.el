@@ -65,3 +65,12 @@
 (package! ob-mermaid)
 (package! org-super-agenda)
 (package! org-ref)
+;; Music
+(package! lastfm)
+(package! vuiet)
+
+;; Corporate Life
+(package! org-jira)
+
+;; Make K8s accessible in Emacs
+(package! kubernetes)

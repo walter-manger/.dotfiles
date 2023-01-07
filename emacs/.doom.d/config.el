@@ -54,6 +54,7 @@
 (load! "+evil")
 (load! "+python")
 (load! "+music")
+(load! "+org-jira")
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
@@ -158,3 +159,14 @@
 
 (after! org
  (require 'org-ref))
+
+;; Always try ~/.authinfo first
+(after! auth-source
+  (setq auth-sources (nreverse auth-sources)))
+
+
+(use-package! kubernetes
+  :commands (kubernetes-overview)
+  :config
+  (setq kubernetes-poll-frequency 3600
+        kubernetes-redraw-frequency 3600))

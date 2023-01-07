@@ -19,7 +19,7 @@
        ;;japanese
 
        :os
-       macos
+       (:if IS-MAC macos)
 
        :completion
        company           ; the ultimate code completion backend
@@ -158,7 +158,8 @@
         +pomodoro
         +pandoc
         +pretty
-        +gnuplot)
+        +gnuplot
+        +hugo)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
