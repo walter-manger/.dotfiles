@@ -170,3 +170,9 @@
   :config
   (setq kubernetes-poll-frequency 3600
         kubernetes-redraw-frequency 3600))
+
+
+;; don't watch in the large code bases that I find myself in
+(after! lsp-mode
+        (setq lsp-enable-file-watchers nil)
+        (setq lsp-file-watch-threshold 100))

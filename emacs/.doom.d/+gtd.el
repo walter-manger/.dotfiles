@@ -1,11 +1,18 @@
 ;;; ../repos/walter-manger/.dotfiles/emacs/.doom.d/+gtd.el -*- lexical-binding: t; -*-
 
+(setq org-directory "~/Dropbox/Org/organizer/.agenda-files")
+
+(wm/add-file-keybinding "C-c z w" (concat (file-name-as-directory org-directory) "work.org") "work.org")
+(wm/add-file-keybinding "C-c z h" (concat (file-name-as-directory org-directory) "home.org") "home.org")
+(wm/add-file-keybinding "C-c z g" (concat (file-name-as-directory org-directory) "gtd/refile.org") "refile.org")
+(wm/add-file-keybinding "C-c z n" (concat (file-name-as-directory org-directory) "gtd/next.org") "next.org")
+(wm/add-file-keybinding "C-c z f" (concat (file-name-as-directory org-directory) "elfeed.org") "elfeed.org")
+
 ;;; Inspration
 ;;; https://github.com/kandread/doom-emacs-private/blob/master/%2Bgtd.el
 ;;; http://doc.norang.ca/org-mode.html
 
 (after! org
-  (setq org-directory "~/Dropbox/Org/organizer/.agenda-files")
   (setq org-roam-directory "~/Dropbox/Org/organizer/roam")
   (setq org-agenda-files  '(
                             "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org"
@@ -13,12 +20,6 @@
                             "~/Dropbox/Org/organizer/.agenda-files/gtd/someday.org"
                             "~/Dropbox/Org/organizer/.agenda-files/gtd/projects.org"
                             ))
-
-  (wm/add-file-keybinding "C-c z w" (concat (file-name-as-directory org-directory) "work.org") "work.org")
-  (wm/add-file-keybinding "C-c z h" (concat (file-name-as-directory org-directory) "home.org") "home.org")
-  (wm/add-file-keybinding "C-c z g" (concat (file-name-as-directory org-directory) "gtd/refile.org") "refile.org")
-  (wm/add-file-keybinding "C-c z n" (concat (file-name-as-directory org-directory) "gtd/next.org") "next.org")
-  (wm/add-file-keybinding "C-c z f" (concat (file-name-as-directory org-directory) "elfeed.org") "elfeed.org")
 
   ;; Borrowing from -> https://github.com/nmartin84/.doom.d#capture-templates
   (setq org-capture-templates

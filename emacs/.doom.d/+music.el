@@ -29,6 +29,9 @@
 (defun wm/le-cassette-arms () (interactive)
        (emms-play-url "https://youtu.be/xzJmFt4iKK8?t=889"))
 
+(defun wm/gryff () (interactive)
+       (emms-play-url "https://www.youtube.com/watch?v=whwrW79zVwo"))
+
 (defun wm/playlist () (interactive)
        (emms-play-playlist "~/.doom.d/modules/private/emms/pls"))
 
