@@ -80,3 +80,10 @@
 
 ;; Let's try out viewing circleci builds
 (package! magit-circleci)
+
+(package! emmet-mode)
+
+;;(use-package emmet-mode
+;;  :defer t
+;;  :hook ((web-mode . emmet-mode)
+;;         (css-mode . emmet-mode)))
