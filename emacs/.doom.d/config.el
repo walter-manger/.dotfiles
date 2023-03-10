@@ -176,3 +176,8 @@
 (after! lsp-mode
         (setq lsp-enable-file-watchers nil)
         (setq lsp-file-watch-threshold 100))
+
+
+(use-package! magit-circleci
+  :config
+  (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))

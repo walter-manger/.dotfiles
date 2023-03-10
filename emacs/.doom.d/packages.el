@@ -57,7 +57,7 @@
 
 
 ;;(package! python-black)
-;;(package! prettier)
+(package! prettier)
 (package! jsonnet-mode)
 (package! protobuf-mode)
 (package! bazel)
@@ -74,3 +74,9 @@
 
 ;; Make K8s accessible in Emacs
 (package! kubernetes)
+
+;; Handle Gherkin files
+(package! feature-mode)
+
+;; Let's try out viewing circleci builds
+(package! magit-circleci)
