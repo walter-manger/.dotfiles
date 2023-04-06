@@ -87,3 +87,5 @@
 ;;  :defer t
 ;;  :hook ((web-mode . emmet-mode)
 ;;         (css-mode . emmet-mode)))
+
+(package! go-playground)
