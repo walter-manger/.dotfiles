@@ -181,3 +181,6 @@
 (use-package! magit-circleci
   :config
   (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))
+
+(after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
+          projectile-project-root-files-bottom-up)))

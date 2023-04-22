@@ -27,14 +27,14 @@
            "* REFILE %^{task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?")
           ("s" "ℹ️ Source" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
            "* REFILE %^{description} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n:METADATA:\n- SOURCE: %(org-cliplink-capture)\n- AUTHOR:\n:END:\n%?")
-          ("r" "📚 Read" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/books.org" "Inbox")
-           "* TODO %^{title} %^g\n:PROPERTIES:\n:CREATED: %U\n:author: %^{author}\n:url: %c\n:pages: \n:rating: \n:END:\n%?")
+          ;; ("r" "📚 Read" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/books.org" "Inbox")
+          ;;  "* TODO %^{title} %^g\n:PROPERTIES:\n:CREATED: %U\n:author: %^{author}\n:url: %c\n:pages: \n:rating: \n:END:\n%?")
           ;;("j" " journal")
           ;;("gp" " projects")
           ;;("b" " bullet journal")
           ;;("l" " local project")
           ;;("n" " notes")
-          ;; ("r" " resources")
+          ("r" "📎 resources")
           ))
 
   ;; TODO: Cleanup the template names to be more clear and easier to recognize.
@@ -44,6 +44,10 @@
   ;; (push '("gx" " capture [current pos]" entry (file+olp "~/Dropbox/Org/organizer/.agenda-files/gtd.org" "Inbox") "* REFILE %^{task}\n:PROPERTIES:\n:CREATED: %U\n:END:\nLocation at time of capture: %a") org-capture-templates)
 
   ;; TODO: Configure more resource capture templates.
+  (push '("rb" "📚 Book" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/read.org" "Inbox")
+          "* TODO %^{title} %^g\n:PROPERTIES:\n:CREATED: %U\n:author: %^{author}\n:url: %c\n:pages: \n:rating: \n:END:\n%?") org-capture-templates)
+  (push '("ra" "📰 Article" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/read.org" "Inbox")
+          "* TODO %^{title} %^g\n:PROPERTIES:\n:CREATED: %U\n:author: %^{author}\n:url: %c\n:END:\n%?") org-capture-templates)
   ;; (push '("rr" " research literature" entry (file+function "~/projects/orgmode/gtd/websources.org" nm/enter-headline-websources) "* READ %(get-page-title (current-kill 0))") org-capture-templates)
   ;; (push '("rf" " rss feed" entry (file+function "~/projects/orgmode/elfeed.org" nm/return-headline-in-file) "* %^{link}") org-capture-templates)
   )
