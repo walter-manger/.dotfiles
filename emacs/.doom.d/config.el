@@ -184,3 +184,6 @@
 
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
           projectile-project-root-files-bottom-up)))
+
+(after! web-mode
+        (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
