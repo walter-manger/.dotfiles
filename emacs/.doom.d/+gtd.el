@@ -19,12 +19,16 @@
                             "~/Dropbox/Org/organizer/.agenda-files/gtd/next.org"
                             "~/Dropbox/Org/organizer/.agenda-files/gtd/someday.org"
                             "~/Dropbox/Org/organizer/.agenda-files/gtd/projects.org"
+                            "~/Dropbox/Org/organizer/.agenda-files/gtd/read.org"
                             ))
 
   ;; Borrowing from -> https://github.com/nmartin84/.doom.d#capture-templates
   (setq org-capture-templates
-        '(("i" "📥 Inbox" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
-           "* REFILE %^{task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?")
+        '(("i" "📥 Inbox")
+          ("ih" "✅ Home Task" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/next.org" "Inbox")
+           "* TODO %^{task} :@home:\n:PROPERTIES:\n :CREATED: %U\n :END:\n%?" :empty-lines 1 :kill-buffer t)
+          ("iw" "✅ Work Task" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/next.org" "Inbox")
+           "* TODO %^{task} :@work:\n:PROPERTIES:\n :CREATED: %U\n :END:\n%?" :empty-lines 1 :kill-buffer t)
           ("s" "ℹ️ Source" entry (file "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org")
            "* REFILE %^{description} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n:METADATA:\n- SOURCE: %(org-cliplink-capture)\n- AUTHOR:\n:END:\n%?")
           ;; ("r" "📚 Read" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/books.org" "Inbox")
@@ -42,6 +46,15 @@
   ;;(push '("gc" " capture" entry (file "~/Dropbox/Org/organizer/.agenda-files/refile.org") "* REFILE %^{task}\n:PROPERTIES:\n:CREATED: %U\n:END:\n:METADATA:\n- SOURCE:\n- AUTHOR:\n:END:\n%?") org-capture-templates)
   ;; (push '("gk" " capture [kill-ring]" entry (file+olp "~/Dropbox/Org/organizer/.agenda-files/gtd.org" "Inbox") "* REFILE %^{task}\n:PROPERTIES:\n:CREATED: %U\n:END:\n%c") org-capture-templates)
   ;; (push '("gx" " capture [current pos]" entry (file+olp "~/Dropbox/Org/organizer/.agenda-files/gtd.org" "Inbox") "* REFILE %^{task}\n:PROPERTIES:\n:CREATED: %U\n:END:\nLocation at time of capture: %a") org-capture-templates)
+
+
+  (push '("ir" "🗄 Refile" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/refile.org" "Inbox")
+          "* REFILE %^{task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?") org-capture-templates)
+  ;; (push '("ih" "✅ Home Task" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/next.org" "Inbox")
+  ;;         "* TODO %^{task} :@home:\n :PROPERTIES:\n :CREATED: %U\n :END:\n%?" :empty-lines 1) org-capture-templates)
+  ;; (push '("iw" "✅ Work Task" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/next.org" "Inbox")
+  ;;         "* TODO %^{task} :@work:\n :PROPERTIES:\n :CREATED: %U\n :END:\n%?" :empty-lines 1) org-capture-templates)
+
 
   ;; TODO: Configure more resource capture templates.
   (push '("rb" "📚 Book" entry (file+headline "~/Dropbox/Org/organizer/.agenda-files/gtd/read.org" "Inbox")

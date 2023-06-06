@@ -66,9 +66,10 @@
 ;;          (yaml-mode . prettier-mode)
 ;;          (ruby-mode . prettier-mode)))
 
-(setq deft-directory "~/Dropbox/Org"
-      deft-extensions '("txt" "org" "md")
-      deft-recursive t)
+(setq deft-directory "~/Dropbox/Org/organizer/roam"
+      deft-extensions '("org")
+      deft-use-filename-as-title t
+      deft-recursive nil)
 
 (use-package! jsonnet-mode
   :defer t
@@ -187,3 +188,5 @@
 
 (after! web-mode
         (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
+
+(use-package! lsp-tailwindcss)

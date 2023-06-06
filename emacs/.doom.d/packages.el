@@ -89,3 +89,8 @@
 ;;         (css-mode . emmet-mode)))
 
 (package! go-playground)
+
+;; brew install wordnet
+(package! synosaurus)
+
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
