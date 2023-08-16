@@ -89,7 +89,7 @@ plugins=(
   git
   npm
   yarn
-  osx
+  macos
   zsh-autosuggestions
   vi-mode
 )

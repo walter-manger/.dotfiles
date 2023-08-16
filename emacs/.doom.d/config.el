@@ -59,12 +59,29 @@
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
+
+(setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            web-mode
+            json-mode
+            go-mode
+            latex-mode))
+
 ;; (use-package prettier
-;;   :hook ((typescript-mode . prettier-mode)
-;;          (js-mode . prettier-mode)
-;;          (json-mode . prettier-mode)
-;;          (yaml-mode . prettier-mode)
-;;          (ruby-mode . prettier-mode)))
+;;   :hook (
+;;          ;;(typescript-mode . prettier-mode)
+;;          ;;(js-mode . prettier-mode)
+;;          ;;(json-mode . prettier-mode)
+;;          ;;(yaml-mode . prettier-mode)
+;;          ;;(ruby-mode . prettier-mode)
+;;          (web-mode . prettier-mode)
+;;          ))
+
+
+;;((web-mode . ((eval . (prettier-mode t)))))
+
 
 (setq deft-directory "~/Dropbox/Org/organizer/roam"
       deft-extensions '("org")
@@ -98,15 +115,6 @@
   )
 
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
-
-;; Since gopls keeps changing, it is better to tell format-all-the-code
-;; to specifically NOT use gopls as the formatter.
-;; https://github.com/hlissner/doom-emacs/issues/1652
-(setq +format-on-save-enabled-modes
-      '(not emacs-lisp-mode
-            go-mode
-            tex-mode
-            latex-mode))
 
 (add-hook! 'go-mode-hook
   (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
@@ -190,3 +198,14 @@
         (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
 
 (use-package! lsp-tailwindcss)
+
+(after! reddigg
+  :config
+  (setq reddigg-subs
+        '(
+          Emacs
+          Entrepreneur
+          OverEmployed
+          )
+        )
+  )
