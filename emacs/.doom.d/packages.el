@@ -96,3 +96,5 @@
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
 (package! reddigg)
+
+(package! lilypond)

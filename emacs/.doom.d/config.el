@@ -166,8 +166,14 @@
       (make-directory cache-dir t))
     (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
 
+
+(setq org-babel-lilypond-ly-command "lilypond")
+
 (after! org
- (require 'org-ref))
+ (require 'org-ref)
+ :init
+(setq org-babel-lilypond-ly-command "lilypond")
+ )
 
 ;; Always try ~/.authinfo first
 (after! auth-source
@@ -209,3 +215,7 @@
           )
         )
   )
+
+(after! lilypond
+  :config
+  (setq org-babel-lilypond-commands "lilypond"))
