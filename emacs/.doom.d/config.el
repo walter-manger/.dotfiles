@@ -53,8 +53,10 @@
 (load! "+dired")
 (load! "+evil")
 (load! "+python")
+(load! "+golang")
 (load! "+music")
 (load! "+org-jira")
+(load! "+reading")
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
@@ -62,12 +64,13 @@
 
 (setq +format-on-save-enabled-modes
       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-            sql-mode         ; sqlformat is currently broken
-            tex-mode         ; latexindent is broken
-            web-mode
-            json-mode
-            go-mode
-            latex-mode))
+        sql-mode             ; sqlformat is currently broken
+        tex-mode             ; latexindent is broken
+        web-mode
+        json-mode
+        go-mode              ; gopls handles this nicely
+        python-mode          ; TODO let's not format tiltfiles -- too many changes
+        latex-mode))
 
 ;; (use-package prettier
 ;;   :hook (
@@ -114,13 +117,6 @@
      ))
   )
 
-(add-hook! 'elfeed-search-mode-hook 'elfeed-update)
-
-(add-hook! 'go-mode-hook
-  (add-hook 'before-save-hook #'lsp-format-buffer nil 'local)
-  (add-hook 'before-save-hook #'lsp-organize-imports nil 'local)
-  )
-
 
 ;; brew install vale
 ;; git clone git@github.com:errata-ai/vale-boilerplate.git
@@ -140,10 +136,10 @@
 ;;; server list
 (setq sql-connection-alist
       '((local.user.dev (sql-product 'postgres)
-                        (sql-port 5432)
-                        (sql-server "localhost")
-                        (sql-user "root")
-                        (sql-database "user"))
+         (sql-port 5432)
+         (sql-server "localhost")
+         (sql-user "root")
+         (sql-database "user"))
         ))
 
 
@@ -167,13 +163,13 @@
     (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
 
 
-(setq org-babel-lilypond-ly-command "lilypond")
+;(setq org-babel-lilypond-ly-command "lilypond")
 
 (after! org
- (require 'org-ref)
- :init
-(setq org-babel-lilypond-ly-command "lilypond")
- )
+  (require 'org-ref)
+  :init
+  (setq org-babel-lilypond-ly-command "lilypond")
+  )
 
 ;; Always try ~/.authinfo first
 (after! auth-source
@@ -189,8 +185,8 @@
 
 ;; don't watch in the large code bases that I find myself in
 (after! lsp-mode
-        (setq lsp-enable-file-watchers nil)
-        (setq lsp-file-watch-threshold 100))
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-file-watch-threshold 100))
 
 
 (use-package! magit-circleci
@@ -198,24 +194,20 @@
   (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))
 
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
-          projectile-project-root-files-bottom-up)))
+                                                                         projectile-project-root-files-bottom-up)))
 
 (after! web-mode
-        (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
 
 (use-package! lsp-tailwindcss)
-
-(after! reddigg
-  :config
-  (setq reddigg-subs
-        '(
-          Emacs
-          Entrepreneur
-          OverEmployed
-          )
-        )
-  )
 
 (after! lilypond
   :config
   (setq org-babel-lilypond-commands "lilypond"))
+
+
+(after! rego-mode
+  :config
+  (setq rego-repl-executable "/opt/homebrew/bin/opa")
+  (setq rego-opa-command "/opt/homebrew/bin/opa")
+  )

@@ -39,4 +39,6 @@
       (:prefix-map ("Z" . "personal")
                    (:prefix ("m" . "music") :desc "play playlist" "p" #'wm/playlist)
                    (:prefix ("m" . "music") :desc "open playlist" "o" #'emms)
+                   (:prefix ("m" . "music") :desc "stop" "s" #'emms-stop)
+                   (:prefix ("m" . "music") :desc "pause" "p" #'emms-pause)
                    ))

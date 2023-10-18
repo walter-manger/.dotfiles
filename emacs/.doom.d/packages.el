@@ -98,3 +98,5 @@
 (package! reddigg)
 
 (package! lilypond)
+
+(package! rego-mode)
