@@ -18,10 +18,19 @@
 ;;    emms-player-mpv-parameters '("--quiet" "--really-quiet" "--no-video" "--no-audio-display" "--force-window=no" "--vo=null"))
 
 (defun wm/sleeping-pill () (interactive)
-        (emms-play-url "https://radio.stereoscenic.com/asp-s"))
+        (emms-play-url "https://radio.stereoscenic.com/asp-h"))
 
-(defun wm/hammock () (interactive)
+;; Elsewhere
+(defun wm/hammock-elsewhere () (interactive)
         (emms-play-url "https://www.youtube.com/watch?v=W9tgpsl6R1Y"))
+
+;; Oblivian Hymns
+(defun wm/hammock-oblivion () (interactive)
+        (emms-play-url "https://www.youtube.com/watch?v=GBF3GiMQ0d4"))
+
+;; Chasing After Shadows... Living with Ghosts
+(defun wm/hammock-shadows () (interactive)
+        (emms-play-url "https://www.youtube.com/watch?v=Zxl0ohC_zZ0"))
 
 (defun wm/le-cassette () (interactive)
        (emms-play-url "https://www.youtube.com/watch?v=xzJmFt4iKK8"))

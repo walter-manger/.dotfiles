@@ -42,7 +42,8 @@
     (cons 320 "#703a3a")
     (cons 340 "#4E4E4E")
     (cons 360 "#4E4E4E")))
- '(vc-annotate-very-old-color nil))
+ '(vc-annotate-very-old-color nil)
+ '(warning-suppress-types '((lsp-mode) (lsp-mode) (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

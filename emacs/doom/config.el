@@ -57,6 +57,7 @@
 (load! "+music")
 (load! "+org-jira")
 (load! "+reading")
+(load! "+sql")
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
@@ -132,16 +133,6 @@
   :modes (markdown-mode org-mode text-mode gfm-mode)
   )
 (add-to-list 'flycheck-checkers 'vale 'append)
-
-;;; server list
-(setq sql-connection-alist
-      '((local.user.dev (sql-product 'postgres)
-         (sql-port 5432)
-         (sql-server "localhost")
-         (sql-user "root")
-         (sql-database "user"))
-        ))
-
 
 (setq inferior-lisp-program "clisp")
 

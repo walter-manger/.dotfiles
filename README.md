@@ -10,8 +10,18 @@
 
 ## Stow Essentials
 
+There are now things that get put into ~/.config, so we need to account for that.
+
+Emacs 29 with Doom for example.
+
 ``` sh
-stow -t ~ brew zsh emacs git ssh
+stow -t ~/.config emacs
+```
+
+For the others, this still works.
+
+``` sh
+stow -t ~ brew zsh git ssh
 ```
 
 ### Get Tools
@@ -20,7 +30,14 @@ stow -t ~ brew zsh emacs git ssh
 brew bundle install
 ```
 
-### Make it pretty
+#### Emacs 29, with all the "right stuff"
+
+```sh
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@29 --with-xwidgets --with-imagemagick --with-native-comp --with-modern-doom3-icon
+```
+
+### Make the terminal pretty
 
 ```
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -35,8 +52,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ## Get Doom
 
 ``` sh
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom sync
 ```
 
 ## Setup Git
