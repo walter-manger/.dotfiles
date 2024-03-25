@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Standup
+# uuid:
+# key: stand
+# condition: t
+# --
+* Standup
+
+** Yesterday
+- [ ] $1
+
+** Today
+- [ ] $0
+
+** Blockers
+
+** Notes

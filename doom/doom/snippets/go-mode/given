@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: given
+# uuid:
+# key: given
+# condition: t
+# --
+Convey("Given $0", s.T(), func() {
+    Convey("When", func() {
+        Convey("Then", func() {
+
+        })
+    })
+})
