@@ -37,6 +37,14 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus@29 --with-xwidgets --with-imagemagick --with-native-comp --with-modern-doom3-icon
 ```
 
+## Getting Tree Sitter Issues?
+
+``` sh
+git clone https://github.com/casouri/tree-sitter-module
+./build.sh rust
+sudo cp libtree-sitter-rust.dylib /usr/local/lib
+```
+
 ### Make the terminal pretty
 
 ```

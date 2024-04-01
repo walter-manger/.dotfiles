@@ -9,6 +9,14 @@
 (setq user-full-name "Walter Manger"
       user-mail-address "walter.manger@gmail.com")
 
+;; Don't make my $HOME a project root
+(after! projectile (setq projectile-project-root-files-bottom-up (
+                                                                  remove ".git"
+                                                                  projectile-project-root-files-bottom-up)))
+
+(setq major-mode-remap-alist
+      '((go-mode . go-ts-mode)))
+
 (setq js-indent-level 2
       js2-basic-offset 2)
 
@@ -52,7 +60,7 @@
 (load! "+gtd")
 (load! "+dired")
 (load! "+evil")
-(load! "+python")
+;;(load! "+python")
 (load! "+golang")
 (load! "+music")
 (load! "+org-jira")
@@ -61,7 +69,6 @@
 
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-
 
 (setq +format-on-save-enabled-modes
       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
@@ -123,16 +130,16 @@
 ;; git clone git@github.com:errata-ai/vale-boilerplate.git
 ;; .vale.ini needs to be in the directory of the file you want to lint
 ;; Stolen from: https://emacstil.com/til/2022/03/05/setting-up-vale-prose-linter-on-emacs/
-(flycheck-define-checker vale
-  "A checker for prose"
-  :command ("vale" "--output" "line"
-            source)
-  :standard-input nil
-  :error-patterns
-  ((error line-start (file-name) ":" line ":" column ":" (id (one-or-more (not (any ":")))) ":" (message) line-end))
-  :modes (markdown-mode org-mode text-mode gfm-mode)
-  )
-(add-to-list 'flycheck-checkers 'vale 'append)
+;; (flycheck-define-checker vale
+;;   "A checker for prose"
+;;   :command ("vale" "--output" "line"
+;;             source)
+;;   :standard-input nil
+;;   :error-patterns
+;;   ((error line-start (file-name) ":" line ":" column ":" (id (one-or-more (not (any ":")))) ":" (message) line-end))
+;;   :modes (markdown-mode org-mode text-mode gfm-mode)
+;;   )
+;; (add-to-list 'flycheck-checkers 'vale 'append)
 
 (setq inferior-lisp-program "clisp")
 
@@ -154,7 +161,7 @@
     (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
 
 
-;(setq org-babel-lilypond-ly-command "lilypond")
+                                        ;(setq org-babel-lilypond-ly-command "lilypond")
 
 (after! org
   (require 'org-ref)
@@ -180,9 +187,9 @@
   (setq lsp-file-watch-threshold 100))
 
 
-(use-package! magit-circleci
-  :config
-  (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))
+;; (use-package! magit-circleci
+;;   :config
+;;   (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))
 
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
                                                                          projectile-project-root-files-bottom-up)))

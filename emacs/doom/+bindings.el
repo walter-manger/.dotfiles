@@ -16,4 +16,7 @@
 ;; Don't just call 'org-agenda-Quit as 'org-agenda-exit will close agenda files too
 (add-hook 'org-agenda-mode-hook
           (lambda ()
-                  (local-set-key (kbd "q") 'org-agenda-exit)))
+            (local-set-key (kbd "q") 'org-agenda-exit)))
+
+
+(global-set-key (kbd "<f5>") 'compile)

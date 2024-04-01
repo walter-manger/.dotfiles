@@ -151,3 +151,4 @@ if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc' 
 #export GOPACKAGESDRIVER='/Users/wmanger-videoamp/repos/work/VideoAmp/central/tools/bazel/go/gopackagesdriver.sh'
 #export GOPACKAGESDRIVER='off'
 export PATH="/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS:$PATH"

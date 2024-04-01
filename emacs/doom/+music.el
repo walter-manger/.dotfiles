@@ -1,9 +1,10 @@
-;;; ~/.doom.d/+music.el -*- lexical-binding: t; -*-
+;;; ~/.config/doom/+music.el -*- lexical-binding: t; -*-
 
 (setq-default
-        emms-show-format "NP: %s"
-        emms-player-mpv-parameters '("--no-video" "--force-window=no" "--vo=null"))
-
+ emms-mode-line-icon-enabled-p nil
+ emms-mode-line-format " [ %s ]"
+ emms-show-format "NP: %s"
+ emms-player-mpv-parameters '("--no-video" "--force-window=no" "--vo=null"))
 
 ;; (setq-default
 ;;    emms-source-file-default-directory "~/Music/Downloads"
@@ -18,31 +19,39 @@
 ;;    emms-player-mpv-parameters '("--quiet" "--really-quiet" "--no-video" "--no-audio-display" "--force-window=no" "--vo=null"))
 
 (defun wm/sleeping-pill () (interactive)
-        (emms-play-url "https://radio.stereoscenic.com/asp-h"))
+       (setq emms-mode-line-format " [ :Ambient ]")
+       (emms-play-url "https://radio.stereoscenic.com/asp-h"))
 
 ;; Elsewhere
 (defun wm/hammock-elsewhere () (interactive)
-        (emms-play-url "https://www.youtube.com/watch?v=W9tgpsl6R1Y"))
+       (wm/play-yt "W9tgpsl6R1Y" 0 "Hammock"))
 
 ;; Oblivian Hymns
 (defun wm/hammock-oblivion () (interactive)
-        (emms-play-url "https://www.youtube.com/watch?v=GBF3GiMQ0d4"))
+       (wm/play-yt "GBF3GiMQ0d4" 0 "Hammock"))
 
 ;; Chasing After Shadows... Living with Ghosts
 (defun wm/hammock-shadows () (interactive)
-        (emms-play-url "https://www.youtube.com/watch?v=Zxl0ohC_zZ0"))
+       (wm/play-yt "Zxl0ohC_zZ0" 0 "Hammock"))
 
 (defun wm/le-cassette () (interactive)
-       (emms-play-url "https://www.youtube.com/watch?v=xzJmFt4iKK8"))
+       (wm/play-yt "xzJmFt4iKK8" 0 "Le Casette"))
 
 (defun wm/le-cassette-arms () (interactive)
-       (emms-play-url "https://youtu.be/xzJmFt4iKK8?t=889"))
+       (wm/play-yt "xzJmFt4iKK8" 889 "Le Casette"))
 
 (defun wm/gryff () (interactive)
-       (emms-play-url "https://www.youtube.com/watch?v=whwrW79zVwo"))
+       (wm/play-yt "whwrW79zVwo" 0 "Gryff"))
 
 (defun wm/playlist () (interactive)
+       (setq emms-mode-line-format " [ %s ]")
        (emms-play-playlist "~/.doom.d/modules/private/emms/pls"))
+
+(cl-defun wm/play-yt (id &optional (start-time nil) (title nil))
+  "Plays a youtube ID beginning at time START-TIME with a TITLE."
+  (setq url (format "https://www.youtube.com/watch?v=%s&t=%d" id (or start-time 0)))
+  (setq emms-mode-line-format (format " [ 󰗃:%s ]" (or title id)))
+  (emms-play-url url))
 
 (map! :leader
       (:prefix-map ("Z" . "personal")
