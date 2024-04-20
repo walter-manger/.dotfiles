@@ -140,15 +140,31 @@ fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-export PATH=$HOME/.gloo/bin:$PATH
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/wmanger-videoamp/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
 #export GOPACKAGESDRIVER='/Users/wmanger-videoamp/repos/work/VideoAmp/central/tools/bazel/go/gopackagesdriver.sh'
 #export GOPACKAGESDRIVER='off'
-export PATH="/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin:$PATH"
-export PATH="$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS:$PATH"
+
+if [ -d "$HOME/.gloo/bin" ]; then
+  export PATH="$HOME/.gloo/bin:$PATH"
+fi
+
+if [ -d "/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin" ]; then
+  export PATH="/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin:$PATH"
+fi
+
+if [ -d "$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS" ]; then
+  export PATH="$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS:$PATH"
+fi
+
+if [ -d "/usr/local/opt/icu4c/bin" ]; then
+  export PATH="/usr/local/opt/icu4c/bin:$PATH"
+fi
+
+if [ -d "/usr/local/opt/icu4c/sbin" ]; then
+  export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+fi
