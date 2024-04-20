@@ -3,29 +3,30 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Walter Manger"
       user-mail-address "walter.manger@gmail.com")
 
+(setq doom-scratch-initial-major-mode 'lisp-interaction-mode)
+
+;; Indents
 (setq js-indent-level 2
       js2-basic-offset 2)
-
 (setq web-mode-markup-indent-offset 2)
-
 (setq typescript-indent-level 2)
-
 (setq ruby-indent-level 2)
 
-(advice-remove 'org-tree-slide--display-tree-with-narrow
-               #'+org-present--narrow-to-subtree-a)
+(use-package org-indent
+  :hook (org-mode . org-indent-mode))
 
 (add-hook 'json-mode-hook
           (lambda ()
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
 
+(advice-remove 'org-tree-slide--display-tree-with-narrow
+               #'+org-present--narrow-to-subtree-a)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -61,7 +62,6 @@
 ;; (add-hook 'typescript-tsx-mode #'format-all-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
-
 (setq +format-on-save-enabled-modes
       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
         sql-mode             ; sqlformat is currently broken
@@ -85,8 +85,7 @@
 
 ;;((web-mode . ((eval . (prettier-mode t)))))
 
-
-(setq deft-directory "~/Dropbox/Org/organizer/roam"
+(setq deft-directory (concat (file-name-as-directory org-base-directory) "organizer/roam")
       deft-extensions '("org")
       deft-use-filename-as-title t
       deft-recursive nil)
@@ -96,7 +95,6 @@
   :config
   (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?}))
   (setq jsonnet-use-smie t))
-
 
 (setq +format-with-lsp nil)
 ;;(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
@@ -116,7 +114,6 @@
      ;;("gopls.experimentalWorkspaceModule" t t)
      ))
   )
-
 
 ;; brew install vale
 ;; git clone git@github.com:errata-ai/vale-boilerplate.git
@@ -142,7 +139,6 @@
          (sql-database "user"))
         ))
 
-
 (setq inferior-lisp-program "clisp")
 
 (setq ob-mermaid-cli-path "~/node_modules/.bin/mmdc")
@@ -162,8 +158,7 @@
       (make-directory cache-dir t))
     (setq orhc-bibtex-cache-file (concat cache-dir "/orhc-bibtex-cache"))))
 
-
-                                        ;(setq org-babel-lilypond-ly-command "lilypond")
+;; (setq org-babel-lilypond-ly-command "lilypond")
 
 (after! org
   (require 'org-ref)
@@ -174,7 +169,6 @@
 ;; Always try ~/.authinfo first
 (after! auth-source
   (setq auth-sources (nreverse auth-sources)))
-
 
 (use-package! kubernetes
   :commands (kubernetes-overview)
@@ -189,9 +183,9 @@
   (setq lsp-file-watch-threshold 100))
 
 
-(use-package! magit-circleci
-  :config
-  (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))
+;; (use-package! magit-circleci
+;;   :config
+;;   (setq magit-circleci-token "b2fb2c60de29d7cc186c5f8272500e84932b354b"))
 
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
                                                                          projectile-project-root-files-bottom-up)))
@@ -199,15 +193,22 @@
 (after! web-mode
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
 
-(use-package! lsp-tailwindcss)
+;; (use-package! lsp-tailwindcss)
 
 (after! lilypond
   :config
   (setq org-babel-lilypond-commands "lilypond"))
 
-
 (after! rego-mode
   :config
   (setq rego-repl-executable "/opt/homebrew/bin/opa")
-  (setq rego-opa-command "/opt/homebrew/bin/opa")
-  )
+  (setq rego-opa-command "/opt/homebrew/bin/opa"))
+
+;; accept completion from copilot and fallback to company
+;; (use-package! copilot
+;;   :hook (prog-mode . copilot-mode)
+;;   :bind (:map copilot-completion-map
+;;               ("<tab>" . 'copilot-accept-completion)
+;;               ("TAB" . 'copilot-accept-completion)
+;;               ("C-TAB" . 'copilot-accept-completion-by-word)
+;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))

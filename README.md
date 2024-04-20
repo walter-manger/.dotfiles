@@ -34,8 +34,10 @@ brew bundle install
 
 ```sh
 brew tap d12frosted/emacs-plus
-brew install emacs-plus@29 --with-xwidgets --with-imagemagick --with-native-comp --with-modern-doom3-icon
+brew install emacs-plus@29 --with-imagemagick --with-no-frame-refocus --with-native-comp --with-modern-doom3-icon --with-poll && osascript -e 'display notification "Add 'Other' to Spotlight Search Results"'
 ```
+
+> Don't forget to add "Other" to spotlight search results!
 
 ## Getting Tree Sitter Issues?
 

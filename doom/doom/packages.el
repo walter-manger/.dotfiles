@@ -58,13 +58,13 @@
 
 ;; (package! python-black)
 ;; (package! prettier)
-;; (package! jsonnet-mode)
-;; (package! protobuf-mode)
-;; (package! bazel)
-;;(package! elfeed-goodies)
+(package! jsonnet-mode)
+(package! protobuf-mode)
+(package! bazel)
+;; (package! elfeed-goodies)
 ;; (package! ob-mermaid)
-;; (package! org-super-agenda)
-;; (package! org-ref)
+(package! org-super-agenda)
+(package! org-ref)
 ;; Music
 ;; (package! lastfm)
 ;; (package! vuiet)
@@ -91,12 +91,17 @@
 ;; (package! go-playground)
 
 ;; brew install wordnet
-;; (package! synosaurus)
+(package! synosaurus)
 
 ;; (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
-;; (package! reddigg)
+(package! reddigg)
 
-;; (package! lilypond)
+(package! lilypond)
 
-;; (package! rego-mode)
+(package! rego-mode)
+
+;; (package! copilot
+;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+;;(package! chatgpt :recipe (:host github :repo "emacs-openai/chatgpt"))

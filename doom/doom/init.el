@@ -100,7 +100,7 @@
         +offline
         +docsets)       ; navigate your code and its documentation
        ;;(lsp)
-       magit             ; a git porcelain for Emacs
+       magit            ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
@@ -154,13 +154,13 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org
-        +dragndrop
-        +jupyter
+        ;; +dragndrop
+        ;; +jupyter
         +roam2
-        +present
-        +pomodoro
-        +pandoc
-        +pretty
+        ;; +present
+        ;; +pomodoro
+        ;; +pandoc
+        ;; +pretty
         +gnuplot
         +hugo)
        ;;php               ; perl's insecure younger brother
@@ -180,8 +180,7 @@
        ;;  +lsp
        ;;  +rbenv
        ;;  +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;; (rust
-       ;;  +lsp)
+       (rust +tree-sitter)
                                         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps

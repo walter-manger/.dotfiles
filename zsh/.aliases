@@ -3,7 +3,7 @@
 alias x="exit"
 alias sz="source ~/.zshrc"
 alias hc="history -c"
-alias emacs="Emacs"
+#alias emacs="Emacs"
 alias k="kubectl"
 alias zshconfig="emacs ~/.zshrc"
 alias work="cd ~/repos/work"
