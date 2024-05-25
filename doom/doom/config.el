@@ -9,6 +9,7 @@
       user-mail-address "walter.manger@gmail.com")
 
 (setq doom-scratch-initial-major-mode 'lisp-interaction-mode)
+(setq initial-major-mode 'lisp-interaction-mode)
 
 ;; Indents
 (setq js-indent-level 2

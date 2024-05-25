@@ -148,23 +148,8 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/D
 
 #export GOPACKAGESDRIVER='/Users/wmanger-videoamp/repos/work/VideoAmp/central/tools/bazel/go/gopackagesdriver.sh'
 #export GOPACKAGESDRIVER='off'
+export PATH="/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS:$PATH"
 
-if [ -d "$HOME/.gloo/bin" ]; then
-  export PATH="$HOME/.gloo/bin:$PATH"
-fi
-
-if [ -d "/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin" ]; then
-  export PATH="/usr/local/bin:/opt/homebrew/opt/gnuplot@4/bin:$PATH"
-fi
-
-if [ -d "$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS" ]; then
-  export PATH="$HOME/.config/emacs/bin:/Applications/Emacs.app/Contents/MacOS:$PATH"
-fi
-
-if [ -d "/usr/local/opt/icu4c/bin" ]; then
-  export PATH="/usr/local/opt/icu4c/bin:$PATH"
-fi
-
-if [ -d "/usr/local/opt/icu4c/sbin" ]; then
-  export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-fi
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -63,7 +63,8 @@
 (defun wm/somebody () (interactive)
        (wm/play-yt "lN8TtaYMeDk" 0 "Somebody"))
 
-
+(defun wm/holy-name () (interactive)
+       (wm/play-yt "ojntwsaCvfA" 0 "HolyName"))
 
 (defun wm/playlist () (interactive)
        (setq emms-mode-line-format " [ %s ]")
